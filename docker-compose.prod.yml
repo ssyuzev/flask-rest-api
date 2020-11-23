@@ -1,0 +1,51 @@
+version: "3.7"
+
+services:
+
+  db:
+    image: postgres:12-alpine
+    restart: always
+    env_file:
+      - ./.env
+    volumes:
+      - ./data/postgres/data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"
+    networks:
+      - local
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile-prod
+    command: gunicorn --bind 0.0.0.0:8080 --chdir /app/src manage:app --worker-class gevent --workers 8 --max-requests 10000 --timeout 15 --keep-alive 15 --log-level info --log-file /app/logs/g.log --access-logfile=/app/logs/gunicorn_access.log
+    restart: on-failure
+    env_file:
+      - ./.env
+    volumes:
+      - ./src:/app/src
+      - ./logs:/app/logs
+      - ./public:/app/public
+      - ./scripts:/app/scripts
+    ports:
+      - "5000:5000"
+    depends_on: 
+      - db
+    networks:
+      - local
+  nginx:
+    image: nginx:1.17
+    ports:
+      - "80:80"
+      - "443:443"
+    command: /bin/bash -c "envsubst < /app/scripts/nginx.conf > /etc/nginx/conf.d/default.conf && exec nginx-debug -g 'daemon off;'"
+    depends_on:
+      - app
+    volumes:
+      - ./scripts:/app/scripts
+      - ./logs:/app/logs
+    networks:
+      - local
+
+networks:
+  local:
+    driver: bridge
