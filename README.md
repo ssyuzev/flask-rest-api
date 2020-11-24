@@ -1,6 +1,4 @@
-# {{ cookiecutter.project_name }}
-
-{{ cookiecutter.project_short_description }}
+# Flask REST API Starter template with cookiecutter
 
 
 ## Requirements
@@ -42,12 +40,8 @@ fab init_db
 fab seed_db
 ```
 
-## Swagger & Redoc
+## Swagger & Redoc (example routes)
 ```
 - http://127.0.0.1:5000/api/v1/docs
-- /api/v1/redoc
+- http://127.0.0.1:5000/api/v1/redoc
 ```
-
-
-(c) {{ cookiecutter.year }} {{ cookiecutter.project_author }}
-version: {{ cookiecutter.version }}
