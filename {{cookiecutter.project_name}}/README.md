@@ -20,7 +20,7 @@ docker-compose up
 
 ## Initialise environment variables. 
 
-Save `.env.example`  as a `.env` file.
+Save `.env.example`  as a `.env` file and change default values to more private.
 
 
 ## Run migrations
