@@ -1,4 +1,7 @@
 {
     "project_name": "flask-rest-api-starter",
-    "project_author": "IronMan"
+    "project_short_description": "Basic flask rest api project with data validation and openapi support",
+    "project_author": "IronMan",
+    "year": "2020",
+    "version": "0.1.1"
 }
