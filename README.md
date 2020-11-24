@@ -1,5 +1,5 @@
 # {{cookiecutter.project_name}}
-
+by {{cookiecutter.project_author}}
 
 ## Run locally with docker
 
@@ -21,6 +21,10 @@ Save `.env.example`  as a `.env` file.
 fab init_db
 ```
 
+## Add some demo data such as users
+```
+fab seed_db
+```
 
 ## Swagger & Redoc
 ```
