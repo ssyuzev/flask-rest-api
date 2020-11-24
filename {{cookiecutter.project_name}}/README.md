@@ -9,14 +9,6 @@
 - Fabric3 (optional)
 
 
-## Use cookiecutter to make a new project from this template
-[Cookiecutter docs](https://cookiecutter.readthedocs.io/en/latest/)
-```
-pip install --user cookiecutter
-cookiecutter https://github.com/ssyuzev/flask-rest-api
-```
-
-
 ## Run locally with docker
 
 Use docker-compose
@@ -36,11 +28,20 @@ Save `.env.example`  as a `.env` file.
 ```
 fab init_db
 ```
+OR
+```
+docker-compose exec app /bin/bash ./scripts/run_migrations.sh
+```
 
 ## Add some demo data such as users
 ```
 fab seed_db
 ```
+OR
+```
+docker-compose exec app python3 src/manage.py seed_db
+```
+
 
 ## Swagger & Redoc
 ```
