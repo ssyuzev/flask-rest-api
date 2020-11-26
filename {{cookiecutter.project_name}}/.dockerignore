@@ -1,6 +1,6 @@
 .git
 dockerfiles
-dcoker-compose*
+docker-compose*
 *cache*
 __pycache__
 .pytest_cache
