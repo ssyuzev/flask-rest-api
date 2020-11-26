@@ -9,6 +9,11 @@
 - Fabric3 (optional)
 
 
+## Initialise environment variables. 
+
+Save `.env.example`  as a `.env` file and change default values to more private.
+
+
 ## Run locally with docker
 
 Use docker-compose
@@ -16,11 +21,6 @@ Use docker-compose
 docker-compose build
 docker-compose up
 ```
-
-
-## Initialise environment variables. 
-
-Save `.env.example`  as a `.env` file and change default values to more private.
 
 
 ## Run migrations
